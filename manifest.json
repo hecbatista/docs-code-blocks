@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "Docs Code Blocks",
+  "version": "0.2.1",
+  "description": "Markdown-style code blocks for Google Docs: ``` + Enter, syntax highlighting, language detection, auto-indent, copy.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Docs Code Blocks",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "permissions": [
+    "clipboardWrite"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://docs.google.com/document/*"
+      ],
+      "js": [
+        "src/annotate.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://docs.google.com/document/*"
+      ],
+      "js": [
+        "vendor/highlight.min.js",
+        "vendor/hljs-extra-languages.min.js",
+        "src/highlight.js",
+        "src/docs.js",
+        "src/editor.js",
+        "src/overlay.js",
+        "src/main.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

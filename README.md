@@ -26,14 +26,14 @@ In assembly the editor indents instructions under their label, and finishing a `
 
 ## Install
 
-1. Get the code: clone this repo, or use **Code → Download ZIP** on GitHub and unzip it.
+1. Download `docs-code-blocks-<version>.zip` from the [latest release](https://github.com/hecbatista/docs-code-blocks/releases/latest) and unzip it, or clone this repo.
 2. Open `chrome://extensions` and turn on **Developer mode** (top right).
 3. Click **Load unpacked** and pick the unzipped folder.
 4. Pin the extension from the puzzle-piece menu if you want its help pop-up. Reload any open Google Docs tabs.
 
 Keep the folder where it is, because Chrome loads the extension from it. After changing the code, click the reload icon on the extension's card.
 
-Chrome blocks `.crx` files from outside the Chrome Web Store, so sharing works through this repo or a zip of it. To install with one click and get automatic updates, zip the extension files (`manifest.json`, `icons/`, `popup/`, `src/`, `vendor/`) and upload the zip to the [Chrome Web Store developer dashboard](https://chrome.google.com/webstore/devconsole) as an **Unlisted** item. That needs a developer account, which costs a one-time $5, and Google reviews the item before it goes live.
+Chrome blocks `.crx` files from outside the Chrome Web Store, so sharing works through this repo or a zip of it. To install with one click and get automatic updates, download the zip from the [latest release](https://github.com/hecbatista/docs-code-blocks/releases/latest) and upload it to the [Chrome Web Store developer dashboard](https://chrome.google.com/webstore/devconsole) as an **Unlisted** item. That needs a developer account, which costs a one-time $5, and Google reviews the item before it goes live.
 
 ## How it works
 
@@ -56,3 +56,9 @@ A block is a 2-row table: an 8pt Roboto Mono label row and a 10pt Roboto Mono co
 - Edit only replaces a block after confirming the selection is exactly that block. If it can't confirm, it changes nothing, and if Docs loses the selection while you're editing, your edited code goes to the clipboard. Docs can hang when a paste lands on a selection containing several tables, so the extension never does that.
 - It depends on Google Docs internals (class names, the annotate flag, paste handling). A Docs update can break it. If it does, the next step is re-running the REA analysis against the new client bundle.
 - Docs keeps an empty line above each inserted table.
+
+## License
+
+MIT, see [LICENSE](LICENSE). Bundled [highlight.js](https://highlightjs.org/) (in `vendor/`) is BSD-3-Clause; see [vendor/LICENSE](vendor/LICENSE).
+
+Not affiliated with or endorsed by Google. It relies on undocumented Google Docs behavior that can change at any time.
